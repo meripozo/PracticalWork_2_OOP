@@ -31,11 +31,29 @@ build_metadata.AdditionalFiles.ManifestResourceName = PracticalWork_2.AppShell.x
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/VSCode/OOP2/practical_work_ii_oop/PracticalWork_2_OOP/PracticalWork_2/MainPage.xaml]
+[C:/VSCode/OOP2/practical_work_ii_oop/PracticalWork_2_OOP/PracticalWork_2/ConversorPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = PracticalWork_2.MainPage.xaml
-build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
-build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PracticalWork_2.ConversorPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ConversorPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ConversorPage.xaml
+
+[C:/VSCode/OOP2/practical_work_ii_oop/PracticalWork_2_OOP/PracticalWork_2/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PracticalWork_2.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = LoginPage.xaml
+
+[C:/VSCode/OOP2/practical_work_ii_oop/PracticalWork_2_OOP/PracticalWork_2/RecoverPasswordPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PracticalWork_2.RecoverPasswordPage.xaml
+build_metadata.AdditionalFiles.TargetPath = RecoverPasswordPage.xaml
+build_metadata.AdditionalFiles.RelativePath = RecoverPasswordPage.xaml
+
+[C:/VSCode/OOP2/practical_work_ii_oop/PracticalWork_2_OOP/PracticalWork_2/RegisterPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PracticalWork_2.RegisterPage.xaml
+build_metadata.AdditionalFiles.TargetPath = RegisterPage.xaml
+build_metadata.AdditionalFiles.RelativePath = RegisterPage.xaml
 
 [C:/VSCode/OOP2/practical_work_ii_oop/PracticalWork_2_OOP/PracticalWork_2/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
@@ -48,3 +66,9 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PracticalWork_2.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/VSCode/OOP2/practical_work_ii_oop/PracticalWork_2_OOP/PracticalWork_2/UserInfoPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PracticalWork_2.UserInfoPage.xaml
+build_metadata.AdditionalFiles.TargetPath = UserInfoPage.xaml
+build_metadata.AdditionalFiles.RelativePath = UserInfoPage.xaml

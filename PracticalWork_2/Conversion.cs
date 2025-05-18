@@ -1,35 +1,42 @@
 using System;
 
-namespace oppguidedpw
+namespace PracticalWork_2
 {
     public abstract class Conversion
     {
         protected string name;
-        protected string defintion;
+        protected string definition;
+        protected bool bitSize;
+        protected InputValidator validator;
 
-        public Conversion(string name, string definition)
+        public Conversion(string name, string definition, InputValidator validator)
         {
             this.name = name;
-            this.defintion = definition;
+            this.definition = definition;
+            this.validator = validator;
+            this.bitSize = false;
+        }        
+        public Conversion(string name, string definition, InputValidator validator, bool bitSize)
+        {
+            this.name = name;
+            this.definition = definition;
+            this.validator = validator;
+            this.bitSize = bitSize; 
         }
-
-        public void PrintConversion(string input, string output) 
+        public void PrintConversion(string input, string output)
         {
             Console.Clear();
-            Console.WriteLine($"{this.name} representation of {input} is {output}");
+            Console.WriteLine($"The {this.name} representation of {input} is {output}");
             Console.ReadLine();
         }
-
         public abstract string Change(string input);
-
-        public string GetName()
+        public virtual string Change(string input, int bits)
         {
-            return this.name;
+            throw new NotImplementedException("This method is not implemented in the subclass.");
         }
-
-        public string GetDefinition() 
-        {
-            return this.defintion;
-        }
+        public void Validate(string input) { this.validator.Validate(input); }
+        public string GetName() { return this.name; }
+        public string GetDefinition() { return this.definition; }
+        public bool NeedBitSize() { return this.bitSize; }
     }
 }
