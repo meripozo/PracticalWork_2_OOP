@@ -70,7 +70,7 @@ public partial class ConversorPage : ContentPage
     // Conversion event handlers
     private async void ButtonDecimalToBinary_Clicked(object sender, EventArgs e)
     {
-        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
+        if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
             ResultDisplay.Text = "";
             try
@@ -102,7 +102,7 @@ public partial class ConversorPage : ContentPage
 
     private async void ButtonDecimalToTwosComplement_Clicked(object sender, EventArgs e)
     {
-        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
+        if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
             ResultDisplay.Text = "";
             try
@@ -134,7 +134,7 @@ public partial class ConversorPage : ContentPage
 
     private async void ButtonDecimalToOctal_Clicked(object sender, EventArgs e)
     {
-        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
+        if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
             ResultDisplay.Text = "";
             try
@@ -166,7 +166,7 @@ public partial class ConversorPage : ContentPage
 
     private async void ButtonDecimalToHexadecimal_Clicked(object sender, EventArgs e)
     {
-        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
+        if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
             ResultDisplay.Text = "";
 
@@ -199,7 +199,7 @@ public partial class ConversorPage : ContentPage
 
     private async void ButtonBinaryToDecimal_Clicked(object sender, EventArgs e)
     {
-        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
+        if (ResultDisplay.Text != "" || ResultDisplay.Text!= null)
         {
             ResultDisplay.Text = "";
             try
@@ -231,7 +231,7 @@ public partial class ConversorPage : ContentPage
 
     private async void ButtonTwosComplementToDecimal_Clicked(object sender, EventArgs e)
     {
-        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
+        if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
             ResultDisplay.Text = "";
             try
@@ -263,7 +263,7 @@ public partial class ConversorPage : ContentPage
 
     private async void ButtonOctalToDecimal_Clicked(object sender, EventArgs e)
     {
-        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
+        if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
             ResultDisplay.Text = "";
             try
@@ -295,7 +295,7 @@ public partial class ConversorPage : ContentPage
 
     private async void ButtonHexadecimalToDecimal_Clicked(object sender, EventArgs e)
     {
-        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
+        if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
             ResultDisplay.Text = "";
             try
