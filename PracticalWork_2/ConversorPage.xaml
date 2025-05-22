@@ -6,6 +6,111 @@
 
 <ScrollView>
     <Grid>
+        <!-- Barra superior con botones de navegación -->
+        <Grid RowDefinitions="Auto, *">
+            <Grid Grid.Row="0" ColumnDefinitions="*, Auto, Auto, Auto" Padding="0,10,10,0">
+                <Label Grid.Column="0" />
+                <Button Grid.Column="1" Text="Operations" Margin="5,0" Clicked="Operations_Clicked"/>
+                <Button Grid.Column="2" Text="Logout" Margin="5,0" Clicked="Logout_Clicked"/>
+                <Button Grid.Column="3" Text="Exit" Clicked="Exit_Clicked"/>
+            </Grid>
+            
+            <!-- Contenido principal -->
+            <VerticalStackLayout Grid.Row="1" Spacing="0">
+                
+                <!-- Encabezado con título -->
+                <Frame BackgroundColor="#375D81" 
+                       Padding="20"
+                       HasShadow="False"
+                       CornerRadius="0">
+                    <Label Text="OOP Conversor" 
+                           FontSize="32" 
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
+                </Frame>
+                
+                <!-- Panel principal del conversor -->
+                <Frame BackgroundColor="#E0E0E0" 
+                       HasShadow="False"
+                       Padding="20"
+                       VerticalOptions="FillAndExpand">
+                    <Grid RowDefinitions="Auto, *">
+                        
+                        <!-- Pantalla de resultados -->
+                        <Frame Grid.Row="0"
+                               BackgroundColor="White"
+                               BorderColor="Gray"
+                               Padding="10"
+                               Margin="0,0,0,20">
+                            <Entry x:Name="ResultDisplay"
+                                   IsReadOnly="True"
+                                   FontSize="20"
+                                   BackgroundColor="White"
+                                   HorizontalTextAlignment="End"/>
+                        </Frame>
+                        
+                        <!-- Teclado y botones de conversión -->
+                        <Grid Grid.Row="1"
+                              ColumnDefinitions="*, *, *, *"
+                              RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                              ColumnSpacing="10"
+                              RowSpacing="10">
+                            
+                            <!-- Primera fila de botones numéricos -->
+                            <Button Grid.Row="0" Grid.Column="0" Text="7" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
+                            <Button Grid.Row="0" Grid.Column="1" Text="8" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
+                            <Button Grid.Row="0" Grid.Column="2" Text="9" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
+                            <Button Grid.Row="0" Grid.Column="3" Text="DecimalToBinary" BackgroundColor="#AAAAAA" Clicked="ButtonDecimalToBinary_Clicked"/>
+                            
+                            <!-- Segunda fila de botones numéricos -->
+                            <Button Grid.Row="1" Grid.Column="0" Text="4" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
+                            <Button Grid.Row="1" Grid.Column="1" Text="5" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
+                            <Button Grid.Row="1" Grid.Column="2" Text="6" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
+                            <Button Grid.Row="1" Grid.Column="3" Text="DecimalToTwoComplement" BackgroundColor="#AAAAAA" Clicked="ButtonDecimalToTwosComplement_Clicked"/>
+                            
+                            <!-- Tercera fila de botones numéricos -->
+                            <Button Grid.Row="2" Grid.Column="0" Text="1" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
+                            <Button Grid.Row="2" Grid.Column="1" Text="2" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
+                            <Button Grid.Row="2" Grid.Column="2" Text="3" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
+                            <Button Grid.Row="2" Grid.Column="3" Text="DecimalToOctal" BackgroundColor="#AAAAAA" Clicked="ButtonDecimalToOctal_Clicked"/>
+                            
+                            <!-- Cuarta fila de botones funcionales -->
+                            <Button Grid.Row="3" Grid.Column="0" Text="AC" BackgroundColor="#AAAAAA" Clicked="ClearButton_Clicked"/>
+                            <Button Grid.Row="3" Grid.Column="1" Text="0" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
+                            <Button Grid.Row="3" Grid.Column="2" Text="-" BackgroundColor="#AAAAAA" Clicked="MinusButton_Clicked"/>
+                            <Button Grid.Row="3" Grid.Column="3" Text="DecimalToHexadecimal" BackgroundColor="#AAAAAA" Clicked="ButtonDecimalToHexadecimal_Clicked"/>
+                            
+                            <!-- Quinta fila para conversiones inversas -->
+                            <Button Grid.Row="4" Grid.Column="3" Text="BinaryToDecimal" BackgroundColor="#AAAAAA" Clicked="ButtonBinaryToDecimal_Clicked"/>
+                            
+                            <!-- Sexta fila de botones hexadecimales -->
+                            <Button Grid.Row="5" Grid.Column="0" Text="A" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
+                            <Button Grid.Row="5" Grid.Column="1" Text="B" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
+                            <Button Grid.Row="5" Grid.Column="2" Text="C" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
+                            <Button Grid.Row="5" Grid.Column="3" Text="TwoComplementToDecimal" BackgroundColor="#AAAAAA" Clicked="ButtonTwosComplementToDecimal_Clicked"/>
+                            
+                            <!-- Séptima fila de botones hexadecimales -->
+                            <Button Grid.Row="6" Grid.Column="0" Text="D" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
+                            <Button Grid.Row="6" Grid.Column="1" Text="E" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
+                            <Button Grid.Row="6" Grid.Column="2" Text="F" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
+                            <Button Grid.Row="6" Grid.Column="3" Text="OctalToDecimal" BackgroundColor="#AAAAAA" Clicked="ButtonOctalToDecimal_Clicked"/>
+                            
+                            <!-- Octava fila para conversiones -->
+                            <Button Grid.Row="7" Grid.Column="3" Text="HexadecimalToDecimal" BackgroundColor="#AAAAAA" Clicked="ButtonHexadecimalToDecimal_Clicked"/>
+                        </Grid>
+                    </Grid>
+                </Frame>
+
+                <Button Text="BACK" 
+                        BackgroundColor="#BBBBBB"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        WidthRequest="150"
+                        HorizontalOptions="Center"
+                        Margin="0,20,0,0"
+                        Clicked="BackButton_Clicked"/>
+            </VerticalStackLayout>
+        </Grid>
     </Grid>
 </ScrollView>
 </ContentPage>

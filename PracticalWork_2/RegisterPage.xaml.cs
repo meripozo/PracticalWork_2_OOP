@@ -9,10 +9,14 @@ public partial class RegisterPage : ContentPage
     {
         InitializeComponent();
     }
-
-    private void ExitButton_Clicked(object sender, EventArgs e)
+    private async void ExitButton_Clicked(object sender, EventArgs e)
     {
-        Application.Current.Quit();
+        bool answer = await DisplayAlert("Exit", "Are you sure you want to exit the application?", "Yes", "No");
+        if (answer)
+        {
+            // Exit the application
+            Application.Current.Quit();
+        }
     }
 
     private async void SignUpButton_Clicked(object sender, EventArgs e)
@@ -43,19 +47,16 @@ public partial class RegisterPage : ContentPage
 
         //lógica de registro ....(cambiar cuando haga el txt)
         await DisplayAlert("Success", "Account created successfully!", "OK");
-        
+
         await Navigation.PopAsync();
     }
 
-    private async void SignIn_Tapped(object sender, EventArgs e)
-    {
-        await Navigation.PopAsync();
-    }
-    
+  
+
     private async void PolicyTerms_Tapped(object sender, EventArgs e)
     {
-        await DisplayAlert("Protection Policy", 
-            "Please Moisés, accept the policy terms. (will I pass your subject?...)", 
+        await DisplayAlert("Protection Policy",
+            "Please Moisés, accept the policy terms. (will I pass your subject?...)",
             "OK");
     }
 
@@ -70,5 +71,10 @@ public partial class RegisterPage : ContentPage
         {
             return false;
         }
+    }
+    
+    private async void BackButton_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
     }
 }

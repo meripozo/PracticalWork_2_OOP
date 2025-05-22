@@ -16,33 +16,38 @@ public partial class LoginPage : ContentPage
 		if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))    //cambiar esto a un if igualando a comillas vacías
 		{
 			await DisplayAlert("Error", "Please enter both username and password", "OK");
-			return;
+			await Navigation.PushAsync(new ConversorPage());
+			//return;//este return no se puede hacer
 		}
 
 		// codigo lógica de autenticación
 
-		bool isAuthenticated = ValidateUser(username, password);
+		//bool isAuthenticated = ValidateUser(username, password);
 
-		if (isAuthenticated)
-		{
-			await Navigation.PushAsync(new ConversorPage());
-			await DisplayAlert("Success", "Login successful!", "OK");
-		}
+		// if (isAuthenticated)
+		// {
+			//await Navigation.PushAsync(new ConversorPage());
+			//await DisplayAlert("Success", "Login successful!", "OK");
+		//}
 		else
 		{
 			await DisplayAlert("Error", "Invalid username or password", "OK");
 		}
 	}
-	private bool ValidateUser(string username, string password)
-	{
-		// validaciónnes...
-		return (username == "admin" && password == "password");
-	}
-	private void ExitButton_Clicked(object sender, EventArgs e)
-	{
-		// Cierro la aplicación (no sé si se hace así)
-		Application.Current.Quit();
-	}
+	// private bool ValidateUser(string username, string password)
+	// {
+	// 	// validaciónnes...
+	// 	return (username == "admin" && password == "password");
+	// }
+	private async void ExitButton_Clicked(object sender, EventArgs e)
+    {
+        bool answer = await DisplayAlert("Exit", "Are you sure you want to exit the application?", "Yes", "No");
+        if (answer)
+        {
+            // Exit the application
+            Application.Current.Quit();
+        }
+    }
 	private async void ForgotPassword_Clicked(object sender, EventArgs e)
 	{
 		await Navigation.PushAsync(new RecoverPasswordPage());

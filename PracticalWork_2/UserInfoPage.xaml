@@ -1,6 +1,113 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PracticalWork_2.UserInfoPage"
-             Title="UFV_Conversor">
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="PracticalWork_2.UserInfoPage"
+          Title="UFV_Conversor">
+<ScrollView>
+    <Grid>
+    <Grid RowDefinitions="Auto, *">
+    <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Padding="0,10,10,0">
+    <Label Grid.Column="0" Text="UFV_Conversor" FontSize="20" VerticalOptions="Center" Margin="10,0,0,0"/>
+    <Button Grid.Column="1" Text="Exit" Clicked="ExitButton_Clicked"/>
+    </Grid>
+            <!-- Contenido principal -->
+            <VerticalStackLayout Grid.Row="1" Spacing="0">
+                
+                <!-- Encabezado con título -->
+                <Frame BackgroundColor="#375D81" 
+                    Padding="20"
+                    HasShadow="False"
+                    CornerRadius="0">
+                    <Label Text="Current User Info" 
+                        FontSize="32" 
+                        TextColor="White"
+                        HorizontalOptions="Center"/>
+                </Frame>
+                
+                <!-- Panel principal con información de usuario -->
+                <Frame BackgroundColor="#E0E0E0" 
+                    HasShadow="False"
+                    Padding="20"
+                    VerticalOptions="FillAndExpand">
+                    <VerticalStackLayout Spacing="20">
+                        
+                        <Label Text="User Profile" 
+                            FontSize="24" 
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,10"/>
+                        
+                        <!-- Username Info -->
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Username" 
+                                FontSize="18"/>
+                            <Frame Padding="10" 
+                                BackgroundColor="White" 
+                                BorderColor="Transparent" 
+                                HasShadow="False"
+                                CornerRadius="0">
+                                <Label x:Name="UsernameLabel" 
+                                    FontSize="16"
+                                    VerticalOptions="Center"/>
+                            </Frame>
+                        </VerticalStackLayout>
+                        
+                        <!-- Email Info -->
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Email" 
+                                FontSize="18"/>
+                            <Frame Padding="10" 
+                                BackgroundColor="White" 
+                                BorderColor="Transparent" 
+                                HasShadow="False"
+                                CornerRadius="0">
+                                <Label x:Name="EmailLabel" 
+                                    FontSize="16"
+                                    VerticalOptions="Center"/>
+                            </Frame>
+                        </VerticalStackLayout>
+                        
+                        <!-- Password Info (mascared) -->
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Password" 
+                                FontSize="18"/>
+                            <Frame Padding="10" 
+                                BackgroundColor="White" 
+                                BorderColor="Transparent" 
+                                HasShadow="False"
+                                CornerRadius="0">
+                                <Label x:Name="PasswordLabel" 
+                                    FontSize="16"
+                                    VerticalOptions="Center"/>
+                            </Frame>
+                        </VerticalStackLayout>
+                        
+                        <!-- Number of Operations -->
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Number of Operations" 
+                                FontSize="18"/>
+                            <Frame Padding="10" 
+                                BackgroundColor="White" 
+                                BorderColor="Transparent" 
+                                HasShadow="False"
+                                CornerRadius="0">
+                                <Label x:Name="OperationsLabel" 
+                                    FontSize="16"
+                                    VerticalOptions="Center"/>
+                            </Frame>
+                        </VerticalStackLayout>
+
+                        <Button Text="BACK" 
+                                BackgroundColor="#BBBBBB"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                WidthRequest="150"
+                                HorizontalOptions="Center"
+                                Margin="0,20,0,0"
+                                Clicked="BackButton_Clicked"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ScrollView>
 </ContentPage>
