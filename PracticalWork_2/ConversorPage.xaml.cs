@@ -8,7 +8,7 @@ public partial class ConversorPage : ContentPage
 {
     private bool isNewCalculation = true;
     private bool isNegative = false;
-
+    
     public ConversorPage()
     {
         InitializeComponent();
@@ -70,178 +70,259 @@ public partial class ConversorPage : ContentPage
     // Conversion event handlers
     private async void ButtonDecimalToBinary_Clicked(object sender, EventArgs e)
     {
-        try
+        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
         {
-            DecimalToBinary converter = new DecimalToBinary();
-            if (converter.Validate(ResultDisplay.Text))
+            ResultDisplay.Text = "";
+            try
             {
+                DecimalToBinary converter = new DecimalToBinary("Binary", "Decimal to Binary");
+                converter.Validate(ResultDisplay.Text);
+
                 string result = converter.Change(ResultDisplay.Text);
                 ResultDisplay.Text = result;
                 isNewCalculation = true;
+
+
             }
-            else
+            catch (FormatException ex)
             {
                 await DisplayAlert("Error", "Invalid input for decimal to binary conversion", "OK");
             }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            }
         }
-        catch (Exception ex)
+        else 
         {
-            await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
+        
     }
 
-    private async void ButtonDecimalToTwoComplement_Clicked(object sender, EventArgs e)
+    private async void ButtonDecimalToTwosComplement_Clicked(object sender, EventArgs e)
     {
-        try
+        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
         {
-            DecimalToTwoComplement converter = new DecimalToTwoComplement();
-            if (converter.Validate(ResultDisplay.Text))
+            ResultDisplay.Text = "";
+            try
             {
+                DecimalToTwosComplement converter = new DecimalToTwosComplement("Decimal", "Decimal to Binary (Two Complement)");
+                converter.Validate(ResultDisplay.Text);
+                
                 string result = converter.Change(ResultDisplay.Text);
                 ResultDisplay.Text = result;
                 isNewCalculation = true;
+                
+            
             }
-            else
+            catch (FormatException ex)
             {
                 await DisplayAlert("Error", "Invalid input for decimal to two's complement conversion", "OK");
             }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            }
         }
-        catch (Exception ex)
+        else 
         {
-            await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
+        
     }
 
     private async void ButtonDecimalToOctal_Clicked(object sender, EventArgs e)
     {
-        try
+        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
         {
-            DecimalToOctal converter = new DecimalToOctal();
-            if (converter.Validate(ResultDisplay.Text))
+            ResultDisplay.Text = "";
+            try
             {
-                string result = converter.Change(ResultDisplay.Text);
-                ResultDisplay.Text = result;
-                isNewCalculation = true;
+            DecimalToOctal converter = new DecimalToOctal("Octal", "Decimal to Octal");
+                converter.Validate(ResultDisplay.Text);
+            
+            string result = converter.Change(ResultDisplay.Text);
+            ResultDisplay.Text = result;
+            isNewCalculation = true;
+            
+            
             }
-            else
+            catch (FormatException ex)
             {
                 await DisplayAlert("Error", "Invalid input for decimal to octal conversion", "OK");
             }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            }
         }
-        catch (Exception ex)
+        else
         {
-            await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
+        
     }
 
     private async void ButtonDecimalToHexadecimal_Clicked(object sender, EventArgs e)
     {
-        try
+        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
         {
-            DecimalToHexadecimal converter = new DecimalToHexadecimal();
-            if (converter.Validate(ResultDisplay.Text))
+            ResultDisplay.Text = "";
+
+            try
             {
-                string result = converter.Change(ResultDisplay.Text);
-                ResultDisplay.Text = result;
-                isNewCalculation = true;
+            DecimalToHexadecimal converter = new DecimalToHexadecimal("Hexadecimal", "Decimal to Hexadecimal");
+            converter.Validate(ResultDisplay.Text);
+            
+            string result = converter.Change(ResultDisplay.Text);
+            ResultDisplay.Text = result;
+            isNewCalculation = true;
+            
+            
             }
-            else
+            catch (FormatException ex)
             {
                 await DisplayAlert("Error", "Invalid input for decimal to hexadecimal conversion", "OK");
             }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            }
         }
-        catch (Exception ex)
+        else
         {
-            await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
+        
     }
 
     private async void ButtonBinaryToDecimal_Clicked(object sender, EventArgs e)
     {
-        try
+        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
         {
-            BinaryToDecimal converter = new BinaryToDecimal();
-            if (converter.Validate(ResultDisplay.Text))
+            ResultDisplay.Text = "";
+            try
             {
-                string result = converter.Change(ResultDisplay.Text);
-                ResultDisplay.Text = result;
-                isNewCalculation = true;
+            BinaryToDecimal converter = new BinaryToDecimal("Decimal", "Binary to Decimal");
+            converter.Validate(ResultDisplay.Text);
+            
+            string result = converter.Change(ResultDisplay.Text);
+            ResultDisplay.Text = result;
+            isNewCalculation = true;
+            
+            
             }
-            else
+            catch (FormatException ex)
             {
                 await DisplayAlert("Error", "Invalid input for binary to decimal conversion", "OK");
             }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            }
         }
-        catch (Exception ex)
+        else
         {
-            await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
+        
     }
 
-    private async void ButtonTwoComplementToDecimal_Clicked(object sender, EventArgs e)
+    private async void ButtonTwosComplementToDecimal_Clicked(object sender, EventArgs e)
     {
-        try
+        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
         {
-            TwoComplementToDecimal converter = new TwoComplementToDecimal();
-            if (converter.Validate(ResultDisplay.Text))
+            ResultDisplay.Text = "";
+            try
             {
-                string result = converter.Change(ResultDisplay.Text);
-                ResultDisplay.Text = result;
-                isNewCalculation = true;
+            TwosComplementToDecimal converter = new TwosComplementToDecimal("Decimal", "Binary (Two Complement) to Decimal");
+            converter.Validate(ResultDisplay.Text);
+        
+            string result = converter.Change(ResultDisplay.Text);
+            ResultDisplay.Text = result;
+            isNewCalculation = true;
+            
+            
             }
-            else
+            catch (FormatException ex)
             {
                 await DisplayAlert("Error", "Invalid input for two's complement to decimal conversion", "OK");
             }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            }
         }
-        catch (Exception ex)
+        else
         {
-            await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
+        
     }
 
     private async void ButtonOctalToDecimal_Clicked(object sender, EventArgs e)
     {
-        try
+        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
         {
-            OctalToDecimal converter = new OctalToDecimal();
-            if (converter.Validate(ResultDisplay.Text))
+            ResultDisplay.Text = "";
+            try
             {
-                string result = converter.Change(ResultDisplay.Text);
-                ResultDisplay.Text = result;
-                isNewCalculation = true;
+            OctalToDecimal converter = new OctalToDecimal("Decimal", "Octal to Decimal");
+            converter.Validate(ResultDisplay.Text);
+        
+            string result = converter.Change(ResultDisplay.Text);
+            ResultDisplay.Text = result;
+            isNewCalculation = true;
+            
+            
             }
-            else
+            catch (FormatException ex)
             {
                 await DisplayAlert("Error", "Invalid input for octal to decimal conversion", "OK");
             }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            }
         }
-        catch (Exception ex)
+        else
         {
-            await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
+        
     }
 
     private async void ButtonHexadecimalToDecimal_Clicked(object sender, EventArgs e)
     {
-        try
+        if (ResultDisplay.Text == "" || ResultDisplay.Text == null)
         {
-            HexadecimalToDecimal converter = new HexadecimalToDecimal();
-            if (converter.Validate(ResultDisplay.Text))
+            ResultDisplay.Text = "";
+            try
             {
-                string result = converter.Change(ResultDisplay.Text);
-                ResultDisplay.Text = result;
-                isNewCalculation = true;
+            HexadecimalToDecimal converter = new HexadecimalToDecimal("Decimal", "Hexadecimal to Decimal");
+            converter.Validate(ResultDisplay.Text);
+        
+            string result = converter.Change(ResultDisplay.Text);
+            ResultDisplay.Text = result;
+            isNewCalculation = true;
+            
+            
             }
-            else
+            catch (FormatException ex)
             {
                 await DisplayAlert("Error", "Invalid input for hexadecimal to decimal conversion", "OK");
             }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            }
         }
-        catch (Exception ex)
+        else
         {
-            await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
+            ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
+        
     }
 
     // Navigation event handlers
