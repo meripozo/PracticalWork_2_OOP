@@ -45,8 +45,10 @@ public partial class RegisterPage : ContentPage
         else
         {
 
-            //User user = new User(name, username, password, email);
-            await DisplayAlert("Success", "Account created successfully!", "OK");
+            User user = new User(NameEntry.Text, UsernameEntry.Text, PasswordEntry.Text, EmailEntry.Text);
+
+            user.UserWriteToFile();
+            await DisplayAlert("Success", "Now you can use the conversor!!", "OK");
             await Navigation.PopAsync();
         }
 

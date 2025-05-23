@@ -1,6 +1,8 @@
 ﻿using Microsoft.Maui.Controls;
 using System;
+using System.IO;
 namespace PracticalWork_2;
+
 
 public partial class LoginPage : ContentPage
 {
@@ -10,35 +12,32 @@ public partial class LoginPage : ContentPage
 	}
 	private async void SignInButton_Clicked(object sender, EventArgs e)
 	{
-		string username = UsernameEntry.Text;
-		string password = PasswordEntry.Text;
 
-		if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))    //cambiar esto a un if igualando a comillas vacías
+		if (string.IsNullOrEmpty(UsernameEntry.Text) || string.IsNullOrEmpty(PasswordEntry.Text))    //cambiar esto a un if igualando a comillas vacías
 		{
 			await DisplayAlert("Error", "Please enter both username and password", "OK");
-			await Navigation.PushAsync(new ConversorPage());
-			//return;//este return no se puede hacer
 		}
 
-		// codigo lógica de autenticación
 
-		//bool isAuthenticated = ValidateUser(username, password);
+		string filePath = "PracticalWork_2/UserInfoSaved.txt";
+		if (File.Exists(filePath))
+		{
+			foreach (string line in File.ReadAllLines(filePath))
+			{
+				//I make the split to read the values of the txt
+				string[] userValues = line.Split(";");
 
-		// if (isAuthenticated)
-		// {
-			//await Navigation.PushAsync(new ConversorPage());
-			//await DisplayAlert("Success", "Login successful!", "OK");
-		//}
+				if (userValues[1] == UsernameEntry.Text && userValues[2] == PasswordEntry.Text)
+				{
+					await Shell.Current.GoToAsync($"{nameof(ConversorPage)}?currentusername={UsernameEntry.Text}");
+				}
+			}
+		}
 		else
 		{
 			await DisplayAlert("Error", "Invalid username or password", "OK");
 		}
 	}
-	// private bool ValidateUser(string username, string password)
-	// {
-	// 	// validaciónnes...
-	// 	return (username == "admin" && password == "password");
-	// }
 	private async void ExitButton_Clicked(object sender, EventArgs e)
     {
         bool answer = await DisplayAlert("Exit", "Are you sure you want to exit the application?", "Yes", "No");

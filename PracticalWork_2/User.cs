@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace PracticalWork_2
 {     //cada cosa que meta el usuario por la interfaz, lo guardo en los atributos del user, y eso lo uso para luego meterlo en el txt
@@ -8,12 +9,23 @@ namespace PracticalWork_2
         private string username;
         private string password;
         private string email;
-        public User(string name, string username, string password, string email) 
+        private int numberOfOperations;
+        public User(string name, string username, string password, string email)
         {
             this.name = name;
             this.username = username;
             this.password = password;
             this.email = email;
+            this.numberOfOperations = 0; //I initialize to 0, because it will be used as a counter
+        }
+
+        public void UserWriteToFile()
+        {
+
+            string filePath = "PracticalWork_2/UserInfoSaved.txt";
+            StreamWriter sw = new StreamWriter(filePath);
+            sw.WriteLine($"{this.name};{this.username};{this.password};{this.email}");
+            sw.Close();
         }
         public string GetName()
         {
