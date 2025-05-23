@@ -24,24 +24,31 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
     public void OperationsCounter()
     {
         string filePath = "PracticalWork_2/UserInfoSaved.txt";
-		if (File.Exists(filePath))
-		{
-			foreach (string line in File.ReadAllLines(filePath))
-			{
-				//I make the split to read the values of the txt
-				string[] userValues = line.Split(";");
+        if (File.Exists(filePath))
+        {
+            string[] lines = File.ReadAllLines(filePath);
 
-                //If the current user exist in the txt, then for that user, I increment the number of operations (to print them in UserInfoPage)
-                if (userValues[1] == currentUsername)
+            bool currentUserExists = false;
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] parts = lines[i].Split(';');
+                if (parts[1] == this.currentUsername)
                 {
-                    int numberOfOperations = Convert.ToInt32(userValues[4]);
-
-                    numberOfOperations++;
-
-                    userValues[4] = numberOfOperations.ToString();
+                    int numberOfOperations = Convert.ToInt32(parts[4]);
+                    numberOfOperations++; //I increment it before writing in the txt
+                    parts[4] = numberOfOperations.ToString();
+                    lines[i] = string.Join(";", parts);
+                    currentUserExists = true;
                 }
-			}
-		}
+            }
+
+            if (currentUserExists)
+            {
+                File.WriteAllLines(filePath, lines);
+            }
+
+        }
+
     }
     private void NumberButton_Clicked(object sender, EventArgs e)
     {
@@ -114,7 +121,7 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
                 ResultDisplay.Text = result;
                 isNewCalculation = true;
 
-                //llamar aqui a la función de incremento de opperacioens
+                OperationsCounter();
             }
             catch (FormatException ex)
             {
@@ -127,11 +134,11 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
                 await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
             }
         }
-        else 
+        else
         {
             ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
-        
+
     }
 
     private async void ButtonDecimalToTwosComplement_Clicked(object sender, EventArgs e)
@@ -142,12 +149,14 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
             {
                 DecimalToTwosComplement converter = new DecimalToTwosComplement("Decimal", "Decimal to Binary (Two Complement)");
                 converter.Validate(ResultDisplay.Text);
-                
+
                 string result = converter.Change(ResultDisplay.Text);
                 ResultDisplay.Text = result;
                 isNewCalculation = true;
-                
-            
+
+                OperationsCounter();
+
+
             }
             catch (FormatException ex)
             {
@@ -160,11 +169,11 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
                 await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
             }
         }
-        else 
+        else
         {
             ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
-        
+
     }
 
     private async void ButtonDecimalToOctal_Clicked(object sender, EventArgs e)
@@ -173,14 +182,17 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
         {
             try
             {
-            DecimalToOctal converter = new DecimalToOctal("Octal", "Decimal to Octal");
+                DecimalToOctal converter = new DecimalToOctal("Octal", "Decimal to Octal");
                 converter.Validate(ResultDisplay.Text);
-            
-            string result = converter.Change(ResultDisplay.Text);
-            ResultDisplay.Text = result;
-            isNewCalculation = true;
-            
-            
+
+                string result = converter.Change(ResultDisplay.Text);
+                ResultDisplay.Text = result;
+                isNewCalculation = true;
+
+                OperationsCounter();
+
+
+
             }
             catch (FormatException ex)
             {
@@ -197,7 +209,7 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
         {
             ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
-        
+
     }
 
     private async void ButtonDecimalToHexadecimal_Clicked(object sender, EventArgs e)
@@ -207,14 +219,16 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
 
             try
             {
-            DecimalToHexadecimal converter = new DecimalToHexadecimal("Hexadecimal", "Decimal to Hexadecimal");
-            converter.Validate(ResultDisplay.Text);
-            
-            string result = converter.Change(ResultDisplay.Text);
-            ResultDisplay.Text = result;
-            isNewCalculation = true;
-            
-            
+                DecimalToHexadecimal converter = new DecimalToHexadecimal("Hexadecimal", "Decimal to Hexadecimal");
+                converter.Validate(ResultDisplay.Text);
+
+                string result = converter.Change(ResultDisplay.Text);
+                ResultDisplay.Text = result;
+                isNewCalculation = true;
+
+                OperationsCounter();
+
+
             }
             catch (FormatException ex)
             {
@@ -231,23 +245,25 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
         {
             ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
-        
+
     }
 
     private async void ButtonBinaryToDecimal_Clicked(object sender, EventArgs e)
     {
-        if (ResultDisplay.Text != "" || ResultDisplay.Text!= null)
+        if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
             try
             {
-            BinaryToDecimal converter = new BinaryToDecimal("Decimal", "Binary to Decimal");
-            converter.Validate(ResultDisplay.Text);
-            
-            string result = converter.Change(ResultDisplay.Text);
-            ResultDisplay.Text = result;
-            isNewCalculation = true;
-            
-            
+                BinaryToDecimal converter = new BinaryToDecimal("Decimal", "Binary to Decimal");
+                converter.Validate(ResultDisplay.Text);
+
+                string result = converter.Change(ResultDisplay.Text);
+                ResultDisplay.Text = result;
+                isNewCalculation = true;
+
+                OperationsCounter();
+
+
             }
             catch (FormatException ex)
             {
@@ -264,7 +280,7 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
         {
             ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
-        
+
     }
 
     private async void ButtonTwosComplementToDecimal_Clicked(object sender, EventArgs e)
@@ -273,14 +289,16 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
         {
             try
             {
-            TwosComplementToDecimal converter = new TwosComplementToDecimal("Decimal", "Binary (Two Complement) to Decimal");
-            converter.Validate(ResultDisplay.Text);
-        
-            string result = converter.Change(ResultDisplay.Text);
-            ResultDisplay.Text = result;
-            isNewCalculation = true;
-            
-            
+                TwosComplementToDecimal converter = new TwosComplementToDecimal("Decimal", "Binary (Two Complement) to Decimal");
+                converter.Validate(ResultDisplay.Text);
+
+                string result = converter.Change(ResultDisplay.Text);
+                ResultDisplay.Text = result;
+                isNewCalculation = true;
+
+                OperationsCounter();
+
+
             }
             catch (FormatException ex)
             {
@@ -297,7 +315,7 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
         {
             ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
-        
+
     }
 
     private async void ButtonOctalToDecimal_Clicked(object sender, EventArgs e)
@@ -306,14 +324,16 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
         {
             try
             {
-            OctalToDecimal converter = new OctalToDecimal("Decimal", "Octal to Decimal");
-            converter.Validate(ResultDisplay.Text);
-        
-            string result = converter.Change(ResultDisplay.Text);
-            ResultDisplay.Text = result;
-            isNewCalculation = true;
-            
-            
+                OctalToDecimal converter = new OctalToDecimal("Decimal", "Octal to Decimal");
+                converter.Validate(ResultDisplay.Text);
+
+                string result = converter.Change(ResultDisplay.Text);
+                ResultDisplay.Text = result;
+                isNewCalculation = true;
+
+                OperationsCounter();
+
+
             }
             catch (FormatException ex)
             {
@@ -330,7 +350,7 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
         {
             ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
-        
+
     }
 
     private async void ButtonHexadecimalToDecimal_Clicked(object sender, EventArgs e)
@@ -339,14 +359,16 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
         {
             try
             {
-            HexadecimalToDecimal converter = new HexadecimalToDecimal("Decimal", "Hexadecimal to Decimal");
-            converter.Validate(ResultDisplay.Text);
-        
-            string result = converter.Change(ResultDisplay.Text);
-            ResultDisplay.Text = result;
-            isNewCalculation = true;
-            
-            
+                HexadecimalToDecimal converter = new HexadecimalToDecimal("Decimal", "Hexadecimal to Decimal");
+                converter.Validate(ResultDisplay.Text);
+
+                string result = converter.Change(ResultDisplay.Text);
+                ResultDisplay.Text = result;
+                isNewCalculation = true;
+
+                OperationsCounter();
+
+
             }
             catch (FormatException ex)
             {
@@ -363,7 +385,7 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
         {
             ResultDisplay.Text = "Please, fill the entry, it is empty.";
         }
-        
+
     }
 
     //here I navigate to UserIfoPage passing the current user username 
@@ -393,7 +415,7 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
             Application.Current.Quit();
         }
     }
-    
+
     private async void BackButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
