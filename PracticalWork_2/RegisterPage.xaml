@@ -36,7 +36,19 @@
                            FontSize="24" 
                            HorizontalOptions="Center"
                            Margin="0,0,0,10"/>
-                    
+
+                     <VerticalStackLayout Spacing="5">
+                        <Label Text="Name" 
+                               FontSize="18"/>
+                        <Frame Padding="10" 
+                               BackgroundColor="White" 
+                               BorderColor="Transparent" 
+                               HasShadow="False"
+                               CornerRadius="0">
+                            <Entry Placeholder="Enter your name" 
+                                   x:Name="NameEntry"/>
+                        </Frame>
+                    </VerticalStackLayout>                    
                     <VerticalStackLayout Spacing="5">
                         <Label Text="Username" 
                                FontSize="18"/>

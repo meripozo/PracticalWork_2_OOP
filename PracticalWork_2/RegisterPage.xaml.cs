@@ -14,17 +14,14 @@ public partial class RegisterPage : ContentPage
         bool answer = await DisplayAlert("Exit", "Are you sure you want to exit the application?", "Yes", "No");
         if (answer)
         {
-            // Exit the application
             Application.Current.Quit();
         }
     }
-
     private async void SignUpButton_Clicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(UsernameEntry.Text) ||   //caambiar esto por comillas vacias 
-            string.IsNullOrWhiteSpace(EmailEntry.Text) ||
-            string.IsNullOrWhiteSpace(PasswordEntry.Text) ||
-            string.IsNullOrWhiteSpace(ConfirmPasswordEntry.Text))
+        
+        if (UsernameEntry.Text == null || UsernameEntry.Text == "" || EmailEntry.Text == null || EmailEntry.Text == "" || NameEntry.Text == null || NameEntry.Text == "" ||
+            PasswordEntry.Text == null || PasswordEntry.Text == "" || ConfirmPasswordEntry.Text == null || ConfirmPasswordEntry.Text == "")
         {
             await DisplayAlert("Error", "Please fill in all fields", "OK");
             return;
@@ -45,21 +42,22 @@ public partial class RegisterPage : ContentPage
             return;
         }
 
-        //lógica de registro ....(cambiar cuando haga el txt)
-        await DisplayAlert("Success", "Account created successfully!", "OK");
+        else
+        {
 
-        await Navigation.PopAsync();
+            //User user = new User(name, username, password, email);
+            await DisplayAlert("Success", "Account created successfully!", "OK");
+            await Navigation.PopAsync();
+        }
+
+        
     }
-
-  
-
     private async void PolicyTerms_Tapped(object sender, EventArgs e)
     {
         await DisplayAlert("Protection Policy",
             "Please Moisés, accept the policy terms. (will I pass your subject?...)",
             "OK");
     }
-
     private bool IsValidEmail(string email)
     {
         try
@@ -72,7 +70,6 @@ public partial class RegisterPage : ContentPage
             return false;
         }
     }
-    
     private async void BackButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();

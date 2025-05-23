@@ -72,7 +72,6 @@ public partial class ConversorPage : ContentPage
     {
         if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
-            ResultDisplay.Text = "";
             try
             {
                 DecimalToBinary converter = new DecimalToBinary("Binary", "Decimal to Binary");
@@ -82,14 +81,16 @@ public partial class ConversorPage : ContentPage
                 ResultDisplay.Text = result;
                 isNewCalculation = true;
 
-
+                //llamar aqui a la función de incremento de opperacioens
             }
             catch (FormatException ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", "Invalid input for decimal to binary conversion", "OK");
             }
             catch (Exception ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
             }
         }
@@ -104,7 +105,6 @@ public partial class ConversorPage : ContentPage
     {
         if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
-            ResultDisplay.Text = "";
             try
             {
                 DecimalToTwosComplement converter = new DecimalToTwosComplement("Decimal", "Decimal to Binary (Two Complement)");
@@ -118,10 +118,12 @@ public partial class ConversorPage : ContentPage
             }
             catch (FormatException ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", "Invalid input for decimal to two's complement conversion", "OK");
             }
             catch (Exception ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
             }
         }
@@ -136,7 +138,6 @@ public partial class ConversorPage : ContentPage
     {
         if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
-            ResultDisplay.Text = "";
             try
             {
             DecimalToOctal converter = new DecimalToOctal("Octal", "Decimal to Octal");
@@ -150,10 +151,12 @@ public partial class ConversorPage : ContentPage
             }
             catch (FormatException ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", "Invalid input for decimal to octal conversion", "OK");
             }
             catch (Exception ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
             }
         }
@@ -168,7 +171,6 @@ public partial class ConversorPage : ContentPage
     {
         if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
-            ResultDisplay.Text = "";
 
             try
             {
@@ -183,10 +185,12 @@ public partial class ConversorPage : ContentPage
             }
             catch (FormatException ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", "Invalid input for decimal to hexadecimal conversion", "OK");
             }
             catch (Exception ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
             }
         }
@@ -201,7 +205,6 @@ public partial class ConversorPage : ContentPage
     {
         if (ResultDisplay.Text != "" || ResultDisplay.Text!= null)
         {
-            ResultDisplay.Text = "";
             try
             {
             BinaryToDecimal converter = new BinaryToDecimal("Decimal", "Binary to Decimal");
@@ -215,10 +218,12 @@ public partial class ConversorPage : ContentPage
             }
             catch (FormatException ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", "Invalid input for binary to decimal conversion", "OK");
             }
             catch (Exception ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
             }
         }
@@ -233,7 +238,6 @@ public partial class ConversorPage : ContentPage
     {
         if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
-            ResultDisplay.Text = "";
             try
             {
             TwosComplementToDecimal converter = new TwosComplementToDecimal("Decimal", "Binary (Two Complement) to Decimal");
@@ -247,10 +251,12 @@ public partial class ConversorPage : ContentPage
             }
             catch (FormatException ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", "Invalid input for two's complement to decimal conversion", "OK");
             }
             catch (Exception ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
             }
         }
@@ -265,7 +271,6 @@ public partial class ConversorPage : ContentPage
     {
         if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
-            ResultDisplay.Text = "";
             try
             {
             OctalToDecimal converter = new OctalToDecimal("Decimal", "Octal to Decimal");
@@ -279,10 +284,12 @@ public partial class ConversorPage : ContentPage
             }
             catch (FormatException ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", "Invalid input for octal to decimal conversion", "OK");
             }
             catch (Exception ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
             }
         }
@@ -297,7 +304,6 @@ public partial class ConversorPage : ContentPage
     {
         if (ResultDisplay.Text != "" || ResultDisplay.Text != null)
         {
-            ResultDisplay.Text = "";
             try
             {
             HexadecimalToDecimal converter = new HexadecimalToDecimal("Decimal", "Hexadecimal to Decimal");
@@ -311,10 +317,12 @@ public partial class ConversorPage : ContentPage
             }
             catch (FormatException ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", "Invalid input for hexadecimal to decimal conversion", "OK");
             }
             catch (Exception ex)
             {
+                ResultDisplay.Text = "";
                 await DisplayAlert("Error", $"Conversion error: {ex.Message}", "OK");
             }
         }
@@ -337,8 +345,9 @@ public partial class ConversorPage : ContentPage
         bool answer = await DisplayAlert("Logout", "Are you sure you want to logout?", "Yes", "No");
         if (answer)
         {
-            // Implement logout logic
-            // For example: await Navigation.PopToRootAsync();
+            //reiniciar usuario
+            //redirigir a login
+            await Navigation.PushAsync(new LoginPage());
         }
     }
 

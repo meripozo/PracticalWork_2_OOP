@@ -12,9 +12,14 @@ public partial class RecoverPasswordPage : ContentPage
         InitializeComponent();
     }
 
-    private void ExitButton_Clicked(object sender, EventArgs e)
+    private async void ExitButton_Clicked(object sender, EventArgs e)
     {
-        Application.Current.Quit();
+        bool answer = await DisplayAlert("Exit", "Are you sure you want to exit the application?", "Yes", "No");
+        if (answer)
+        {
+            // Exit the application
+            Application.Current.Quit();
+        }
     }
 
     private async void ResetPasswordButton_Clicked(object sender, EventArgs e)
