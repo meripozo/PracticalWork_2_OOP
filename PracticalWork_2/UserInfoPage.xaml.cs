@@ -5,101 +5,45 @@ using System.Threading.Tasks;
 
 namespace PracticalWork_2;
 
-public partial class UserInfoPage : ContentPage
+public partial class UserInfoPage : ContentPage, IQueryAttributable
 {
-    // Ruta al archivo donde se guarda la información del usuario activo
-    private string currentUserFilePath = Path.Combine(FileSystem.AppDataDirectory, "currentUser.txt");
-
+    private string currentUsername;
     public UserInfoPage()
     {
         InitializeComponent();
-        LoadUserInfoAsync();
+    }
+
+    //this function belongs to IQueryAttributable interface, I use it "catch" the parameters passed from the Query (from another page)
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (query.ContainsKey("currentusername"))
+            this.currentUsername = query["currentusername"].ToString();
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        // Recargar la información cada vez que la página aparece
-        LoadUserInfoAsync();
-    }
 
-    private async void LoadUserInfoAsync()
-    {
-        try
-        {
-            if (File.Exists(currentUserFilePath))
-            {
-                // Leer la información del usuario desde el archivo
-                string[] userInfo = await File.ReadAllLinesAsync(currentUserFilePath);
-                
-                // Asegurarse de que tenemos al menos la información básica
-                if (userInfo.Length >= 3)
-                {
-                    // Asignar los valores a los elementos de la UI
-                    UsernameLabel.Text = userInfo[0];
-                    EmailLabel.Text = userInfo[1];
-                    
-                    // Mostrar asteriscos para la contraseña por seguridad
-                    // Asumimos que userInfo[2] contiene la contraseña
-                    PasswordLabel.Text = new string('*', userInfo[2].Length);
-                    
-                    // Si hay información sobre el número de operaciones
-                    if (userInfo.Length >= 4 && int.TryParse(userInfo[3], out int operations))
-                    {
-                        OperationsLabel.Text = operations.ToString();
-                    }
-                    else
-                    {
-                        OperationsLabel.Text = "0"; // Valor predeterminado
-                    }
-                }
-                else
-                {
-                    await DisplayAlert("Error", "User information is incomplete.", "OK");
-                }
-            }
-            // else
-            // {
-            //     await DisplayAlert("Error", "No user is currently logged in.", "OK");
-            //     // Opcionalmente redirigir a la página de inicio de sesión
-            //     await Navigation.PopAsync();
-            // }
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", $"Failed to load user information: {ex.Message}", "OK");
-        }
-    }
+        string filePath = "PracticalWork_2/UserInfoSaved.txt";
+		if (File.Exists(filePath))
+		{
+			foreach (string line in File.ReadAllLines(filePath))
+			{
+				//I make the split to read the values of the txt
+				string[] userValues = line.Split(";");
 
-    // Método para actualizar el número de operaciones
-    public void UpdateOperationsCount(int count)
-    {
-        OperationsLabel.Text = count.ToString();
-        
-        // También actualizamos el archivo
-        try
-        {
-            if (File.Exists(currentUserFilePath))
-            {
-                string[] userInfo = File.ReadAllLines(currentUserFilePath);
-                if (userInfo.Length >= 4)
+                if (userValues[1] == currentUsername)
                 {
-                    userInfo[3] = count.ToString();
-                }
-                else
-                {
-                    // Si no existía la línea para operaciones, la añadimos
-                    Array.Resize(ref userInfo, 4);
-                    userInfo[3] = count.ToString();
-                }
-                
-                File.WriteAllLines(currentUserFilePath, userInfo);
-            }
-        }
-        catch (Exception ex)
-        {
-            DisplayAlert("Error", $"Failed to update operations count: {ex.Message}", "OK").ConfigureAwait(false);
-        }
+                    CurrentNameLabel.Text = userValues[0];
+                    UsernameLabel.Text = userValues[1];
+                    PasswordLabel.Text = userValues[2];
+                    EmailLabel.Text = userValues[3];
+                    OperationsLabel.Text = userValues[4];
+                    
+				}
+			}
+		}
+
     }
 
     private async void BackButton_Clicked(object sender, EventArgs e)

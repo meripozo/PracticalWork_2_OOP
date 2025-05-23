@@ -4,17 +4,45 @@ using System.Collections.Generic;
 
 namespace PracticalWork_2;
 
-public partial class ConversorPage : ContentPage
+public partial class ConversorPage : ContentPage, IQueryAttributable //I use this interface to pass the user parameters from one page to another
 {
     private bool isNewCalculation = true;
-    private bool isNegative = false;
-    
+    private string currentUsername;
+
     public ConversorPage()
     {
         InitializeComponent();
     }
 
-    // Event handlers for number buttons
+    //this function belongs to IQueryAttributable interface, I use it "catch" the parameters passed from the Query (from another page)
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (query.ContainsKey("currentusername"))
+            this.currentUsername = query["currentusername"].ToString();
+    }
+
+    public void OperationsCounter()
+    {
+        string filePath = "PracticalWork_2/UserInfoSaved.txt";
+		if (File.Exists(filePath))
+		{
+			foreach (string line in File.ReadAllLines(filePath))
+			{
+				//I make the split to read the values of the txt
+				string[] userValues = line.Split(";");
+
+                //If the current user exist in the txt, then for that user, I increment the number of operations (to print them in UserInfoPage)
+                if (userValues[1] == currentUsername)
+                {
+                    int numberOfOperations = Convert.ToInt32(userValues[4]);
+
+                    numberOfOperations++;
+
+                    userValues[4] = numberOfOperations.ToString();
+                }
+			}
+		}
+    }
     private void NumberButton_Clicked(object sender, EventArgs e)
     {
         Button button = (Button)sender;
@@ -51,16 +79,21 @@ public partial class ConversorPage : ContentPage
     // Event handler for clear button
     private void ClearButton_Clicked(object sender, EventArgs e)
     {
+        bool isNegative = false;
+
         ResultDisplay.Text = string.Empty;
         isNewCalculation = true;
         isNegative = false;
+
     }
 
     // Event handler for minus button
     private void MinusButton_Clicked(object sender, EventArgs e)
     {
+        bool isNegative = false;
         if (string.IsNullOrEmpty(ResultDisplay.Text) || isNewCalculation)
         {
+
             ResultDisplay.Text = "-";
             isNegative = true;
             isNewCalculation = false;
@@ -333,11 +366,11 @@ public partial class ConversorPage : ContentPage
         
     }
 
-    // Navigation event handlers
+    //here I navigate to UserIfoPage passing the current user username 
     private async void Operations_Clicked(object sender, EventArgs e)
     {
         await DisplayAlert("Operations", "Navigate to operations page.", "OK");
-        await Navigation.PushAsync(new UserInfoPage());
+        await Shell.Current.GoToAsync($"{nameof(UserInfoPage)}?currentusername={currentUsername}");
     }
 
     private async void Logout_Clicked(object sender, EventArgs e)

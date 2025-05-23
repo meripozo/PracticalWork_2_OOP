@@ -24,7 +24,7 @@ namespace PracticalWork_2
 
             string filePath = "PracticalWork_2/UserInfoSaved.txt";
             StreamWriter sw = new StreamWriter(filePath);
-            sw.WriteLine($"{this.name};{this.username};{this.password};{this.email}");
+            sw.WriteLine($"{this.name};{this.username};{this.password};{this.email};{this.numberOfOperations}");
             sw.Close();
         }
         public string GetName()

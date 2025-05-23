@@ -37,6 +37,21 @@
                             Margin="0,0,0,10"/>
                         
                         <!-- Username Info -->
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Name" 
+                                FontSize="18"/>
+                            <Frame Padding="10" 
+                                BackgroundColor="White" 
+                                BorderColor="Transparent" 
+                                HasShadow="False"
+                                CornerRadius="0">
+                                <Label x:Name="CurrentNameLabel" 
+                                    FontSize="16"
+                                    VerticalOptions="Center"/>
+                            </Frame>
+                        </VerticalStackLayout>
+
                         <VerticalStackLayout Spacing="5">
                             <Label Text="Username" 
                                 FontSize="18"/>
