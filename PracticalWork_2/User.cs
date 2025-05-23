@@ -23,7 +23,7 @@ namespace PracticalWork_2
         {
 
             string filePath = "PracticalWork_2/UserInfoSaved.txt";
-            StreamWriter sw = new StreamWriter(filePath);
+            StreamWriter sw = File.AppendText(filePath);
             sw.WriteLine($"{this.name};{this.username};{this.password};{this.email};{this.numberOfOperations}");
             sw.Close();
         }
