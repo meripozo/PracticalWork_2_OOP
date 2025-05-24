@@ -22,6 +22,7 @@ public partial class LoginPage : ContentPage
 		string filePath = "PracticalWork_2/UserInfoSaved.txt";
 		if (File.Exists(filePath))
 		{
+			bool userfound = false;
 			foreach (string line in File.ReadAllLines(filePath))
 			{
 				//I make the split to read the values of the txt
@@ -29,14 +30,20 @@ public partial class LoginPage : ContentPage
 
 				if (userValues[1] == UsernameEntry.Text && userValues[2] == PasswordEntry.Text)
 				{
-					await Shell.Current.GoToAsync($"{nameof(ConversorPage)}?currentusername={UsernameEntry.Text}");
+					userfound = true;
 				}
 			}
+			if (userfound)
+			{
+				await Shell.Current.GoToAsync($"{nameof(ConversorPage)}?currentusername={UsernameEntry.Text}");
+			}
+			else
+			{
+				await DisplayAlert("Error", "Invalid username or password", "OK");
+			}
+			
 		}
-		else
-		{
-			await DisplayAlert("Error", "Invalid username or password", "OK");
-		}
+		
 	}
 	private async void ExitButton_Clicked(object sender, EventArgs e)
     {

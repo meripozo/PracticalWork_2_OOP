@@ -2,11 +2,12 @@ using Microsoft.Maui.Controls;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
 namespace PracticalWork_2;
 
 public partial class RecoverPasswordPage : ContentPage
 {
-    private const string USER_DATA_FILE = "userdata.txt";
     public RecoverPasswordPage()
     {
         InitializeComponent();
@@ -22,118 +23,85 @@ public partial class RecoverPasswordPage : ContentPage
         }
     }
 
+    public virtual bool IsValidEmail(string email)
+    {
+        try
+        {
+            var emailRegexpr = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$"); //I use regular expressions to control whether the email is in a correct format oor not
+            return emailRegexpr.IsMatch(email);
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    
+    //this function belongs to IQueryAttributable interface, I use it "catch" the parameters passed from the Query (from another page)
+    // public void ApplyQueryAttributes(IDictionary<string, object> query)
+    // {
+    //     if (query.ContainsKey("currentusername"))
+    //         this.currentUsername = query["currentusername"].ToString();
+    // }
+
     private async void ResetPasswordButton_Clicked(object sender, EventArgs e)
     {
-        string email = EmailEntry.Text?.Trim();
-        string newPassword = NewPasswordEntry.Text;
-        string confirmPassword = ConfirmPasswordEntry.Text;
-
-        // Validar entrada
-        if (string.IsNullOrEmpty(email))
+        if (NewPasswordEntry.Text == null || NewPasswordEntry.Text == "" || EmailEntry.Text == null || EmailEntry.Text == "" || ConfirmNewPasswordEntry.Text == null || ConfirmNewPasswordEntry.Text == "")
         {
-            StatusMessage.Text = "Please enter your email";
+            await DisplayAlert("Error", "Please fill in all fields", "OK");
             return;
         }
-
-        if (string.IsNullOrEmpty(newPassword))
+        if (!IsValidEmail(EmailEntry.Text))
         {
-            StatusMessage.Text = "Please enter a new password";
+            await DisplayAlert("Error", "Please enter a valid email address", "OK");
             return;
         }
-
-        if (string.IsNullOrEmpty(confirmPassword))
+        if (NewPasswordEntry.Text != ConfirmNewPasswordEntry.Text)
         {
-            StatusMessage.Text = "Please confirm your new password";
+            await DisplayAlert("Error", "Passwords do not match", "OK");
             return;
-        }
-
-        // Comprobar que las contraseñas coinciden
-        if (newPassword != confirmPassword)
-        {
-            StatusMessage.Text = "Passwords don't match";
-            return;
-        }
-
-        // Verificar si el email existe y actualizar contraseña
-        if (await VerifyEmailAndUpdatePassword(email, newPassword))
-        {
-            await DisplayAlert("Success", "Password has been reset successfully", "OK");
-            await Navigation.PopAsync(); // Volver a la página de inicio de sesión
         }
         else
         {
             StatusMessage.Text = "Email not found in our records";
         }
+
+        string filePath = "PracticalWork_2/UserInfoSaved.txt";
+        // if (File.Exists(filePath))
+        // {
+        //     foreach (string line in File.ReadAllLines(filePath))
+        //     {
+        //         //I make the split to read the values of the txt
+        //         string[] userValues = line.Split(";");
+
+        //         bool currentUserExists = false;
+        //         for (int i = 0; i < lines.Length; i++)
+        //         {
+        //             string[] parts = lines[i].Split(';');
+        //             if (parts[1] == this.currentUsername)
+        //             {
+        //                 int numberOfOperations = Convert.ToInt32(parts[4]);
+        //                 numberOfOperations++; //I increment it before writing in the txt
+        //                 parts[4] = numberOfOperations.ToString();
+        //                 lines[i] = string.Join(";", parts);
+        //                 currentUserExists = true;
+        //             }
+        //         }
+
+        //         if (currentUserExists)
+        //         {
+        //             File.WriteAllLines(filePath, lines);
+        //         }
+        //         else
+        //         {
+        //             await DisplayAlert("Error", "Invalid username or password", "OK");
+        //             return;
+        //         }
+        //     }
+        // }
+
+
     }
-
-    private async Task<bool> VerifyEmailAndUpdatePassword(string email, string newPassword)
-    {
-        try
-        {
-            string filePath = Path.Combine(FileSystem.AppDataDirectory, USER_DATA_FILE);
-
-            // Comprobar si el archivo existe
-            if (!File.Exists(filePath))
-            {
-                return false;
-            }
-
-            // Leer todas las líneas del archivo
-            string[] lines = await File.ReadAllLinesAsync(filePath);
-            bool emailFound = false;
-
-            // Crear un nuevo array para las líneas actualizadas
-            string[] updatedLines = new string[lines.Length];
-
-            for (int i = 0; i < lines.Length; i++)
-            {
-                string line = lines[i];
-                string[] userData = line.Split(',');
-
-                // Verificar si el formato de la línea es correcto (usualmente username, email, password)
-                if (userData.Length >= 3)
-                {
-                    // Comprueba si el email coincide (asumiendo que el email es el segundo campo)
-                    string userEmail = userData[1].Trim();
-
-                    if (userEmail.Equals(email, StringComparison.OrdinalIgnoreCase))
-                    {
-                        // El email existe, actualiza la contraseña (asumiendo que la contraseña es el tercer campo)
-                        userData[2] = newPassword;
-                        emailFound = true;
-
-                        // Reconstruye la línea con la nueva contraseña
-                        updatedLines[i] = string.Join(",", userData);
-                    }
-                    else
-                    {
-                        // Mantener la línea original si el email no coincide
-                        updatedLines[i] = line;
-                    }
-                }
-                else
-                {
-                    // Si la línea no tiene el formato esperado, la mantenemos como está
-                    updatedLines[i] = line;
-                }
-            }
-
-            // Si encontramos el email, actualizar el archivo
-            if (emailFound)
-            {
-                await File.WriteAllLinesAsync(filePath, updatedLines);
-                return true;
-            }
-
-            return false;
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
-            return false;
-        }
-    }
-    
     private async void BackButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
