@@ -391,7 +391,7 @@ public partial class ConversorPage : ContentPage, IQueryAttributable //I use thi
     //here I navigate to UserIfoPage passing the current user username 
     private async void Operations_Clicked(object sender, EventArgs e)
     {
-        await DisplayAlert("Operations", "Navigate to operations page.", "OK");
+        await DisplayAlert("Operations", "You will navigate to the UserInfo Page.", "OK");
         await Shell.Current.GoToAsync($"{nameof(UserInfoPage)}?currentusername={currentUsername}");
     }
 

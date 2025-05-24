@@ -8,17 +8,16 @@
 <!-- VerticalOptions="FillAndExpand" para asegurar que los elementos se expandan -->
 <Grid RowDefinitions="Auto, *">
 <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Padding="0,10,10,0">
-<Label Grid.Column="0" Text="UFV_Conversor" FontSize="20" VerticalOptions="Center" Margin="10,0,0,0"/>
-<Button Grid.Column="1" Text="Exit" Clicked="ExitButton_Clicked"/>
+<Button Grid.Column="1" Text="Exit" Clicked="ExitButton_Clicked" BackgroundColor="#FFF0BD" TextColor="#A94A4A" FontAttributes="Bold"/>
 </Grid>
         <!-- Contenido principal -->
         <VerticalStackLayout Grid.Row="1" Spacing="0">
             
             <!-- Encabezado con título -->
-            <Frame BackgroundColor="#375D81" 
+            <Frame BackgroundColor="#A94A4A" 
                    Padding="20"
                    HasShadow="False"
-                   CornerRadius="0">
+                   CornerRadius="10">
                 <Label Text="OOP Conversor" 
                        FontSize="32" 
                        TextColor="White"
@@ -26,7 +25,7 @@
             </Frame>
             
             <!-- Panel principal del registro -->
-            <Frame BackgroundColor="#E0E0E0" 
+            <Frame BackgroundColor="#FFF0BD" 
                    HasShadow="False"
                    Padding="20"
                    VerticalOptions="FillAndExpand">
@@ -44,7 +43,7 @@
                                BackgroundColor="White" 
                                BorderColor="Transparent" 
                                HasShadow="False"
-                               CornerRadius="0">
+                               CornerRadius="10">
                             <Entry Placeholder="Enter your name" 
                                    x:Name="NameEntry"/>
                         </Frame>
@@ -56,7 +55,7 @@
                                BackgroundColor="White" 
                                BorderColor="Transparent" 
                                HasShadow="False"
-                               CornerRadius="0">
+                               CornerRadius="10">
                             <Entry Placeholder="Enter your username" 
                                    x:Name="UsernameEntry"/>
                         </Frame>
@@ -69,7 +68,7 @@
                                BackgroundColor="White" 
                                BorderColor="Transparent" 
                                HasShadow="False"
-                               CornerRadius="0">
+                               CornerRadius="10">
                             <Entry Placeholder="Enter your email" 
                                    Keyboard="Email"
                                    x:Name="EmailEntry"/>
@@ -83,7 +82,7 @@
                                BackgroundColor="White" 
                                BorderColor="Transparent" 
                                HasShadow="False"
-                               CornerRadius="0">
+                               CornerRadius="10">
                             <Entry Placeholder="Enter your password" 
                                    IsPassword="True"
                                    x:Name="PasswordEntry"/>
@@ -97,7 +96,7 @@
                                BackgroundColor="White" 
                                BorderColor="Transparent" 
                                HasShadow="False"
-                               CornerRadius="0">
+                               CornerRadius="10">
                             <Entry Placeholder="Confirm your password" 
                                    IsPassword="True"
                                    x:Name="ConfirmPasswordEntry"/>
@@ -108,7 +107,7 @@
                         <CheckBox x:Name="PolicyCheckBox"/>
                         <Label Text="I agree to the " VerticalOptions="Center"/>
                         <Label Text="Protection Policy" 
-                               TextColor="Blue" 
+                               TextColor="#A94A4A" 
                                TextDecorations="Underline"
                                VerticalOptions="Center">
                             <Label.GestureRecognizers>
@@ -118,7 +117,7 @@
                     </HorizontalStackLayout>
                     
                     <Button Text="SIGN UP" 
-                            BackgroundColor="#BBBBBB"
+                            BackgroundColor="#A94A4A"
                             TextColor="White"
                             FontAttributes="Bold"
                             WidthRequest="150"
@@ -127,7 +126,7 @@
                             Clicked="SignUpButton_Clicked"/>
 
                     <Button Text="BACK" 
-                        BackgroundColor="#BBBBBB"
+                        BackgroundColor="#A94A4A"
                         TextColor="White"
                         FontAttributes="Bold"
                         WidthRequest="150"

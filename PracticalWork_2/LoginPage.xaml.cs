@@ -17,7 +17,7 @@ public partial class LoginPage : ContentPage
 		{
 			await DisplayAlert("Error", "Please enter both username and password", "OK");
 		}
-
+	
 
 		string filePath = "PracticalWork_2/UserInfoSaved.txt";
 		if (File.Exists(filePath))
@@ -54,6 +54,7 @@ public partial class LoginPage : ContentPage
             Application.Current.Quit();
         }
     }
+	
 	private async void ForgotPassword_Clicked(object sender, EventArgs e)
 	{
 		await Navigation.PushAsync(new RecoverPasswordPage());

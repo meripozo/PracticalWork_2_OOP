@@ -10,19 +10,19 @@
         <Grid RowDefinitions="Auto, *">
             <Grid Grid.Row="0" ColumnDefinitions="*, Auto, Auto, Auto" Padding="0,10,10,0">
                 <Label Grid.Column="0" />
-                <Button Grid.Column="1" Text="Operations" Margin="5,0" Clicked="Operations_Clicked"/>
-                <Button Grid.Column="2" Text="Logout" Margin="5,0" Clicked="Logout_Clicked"/>
-                <Button Grid.Column="3" Text="Exit" Clicked="Exit_Clicked"/>
+                <Button Grid.Column="1" Text="Operations" Margin="5,0" Clicked="Operations_Clicked" BackgroundColor="#FFF0BD" TextColor="#A94A4A" FontAttributes="Bold"/>
+                <Button Grid.Column="2" Text="Logout" Margin="5,0" Clicked="Logout_Clicked" BackgroundColor="#FFF0BD" TextColor="#A94A4A" FontAttributes="Bold"/>
+                <Button Grid.Column="3" Text="Exit" Clicked="Exit_Clicked" BackgroundColor="#FFF0BD" TextColor="#A94A4A" FontAttributes="Bold"/>
             </Grid>
             
             <!-- Contenido principal -->
             <VerticalStackLayout Grid.Row="1" Spacing="0">
                 
                 <!-- Encabezado con título -->
-                <Frame BackgroundColor="#375D81" 
+                <Frame BackgroundColor="#A94A4A" 
                        Padding="20"
                        HasShadow="False"
-                       CornerRadius="0">
+                       CornerRadius="10">
                     <Label Text="OOP Conversor" 
                            FontSize="32" 
                            TextColor="White"
@@ -30,7 +30,7 @@
                 </Frame>
                 
                 <!-- Panel principal del conversor -->
-                <Frame BackgroundColor="#E0E0E0" 
+                <Frame BackgroundColor="#FFF0BD" 
                        HasShadow="False"
                        Padding="20"
                        VerticalOptions="FillAndExpand">
@@ -57,52 +57,52 @@
                               RowSpacing="10">
                             
                             <!-- Primera fila de botones numéricos -->
-                            <Button Grid.Row="0" Grid.Column="0" Text="7" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
-                            <Button Grid.Row="0" Grid.Column="1" Text="8" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
-                            <Button Grid.Row="0" Grid.Column="2" Text="9" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
-                            <Button Grid.Row="0" Grid.Column="3" Text="DecimalToBinary" BackgroundColor="#AAAAAA" Clicked="ButtonDecimalToBinary_Clicked"/>
+                            <Button Grid.Row="0" Grid.Column="0" Text="7" BackgroundColor="#D99D81" Clicked="NumberButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="0" Grid.Column="1" Text="8" BackgroundColor="#D99D81" Clicked="NumberButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="0" Grid.Column="2" Text="9" BackgroundColor="#D99D81" Clicked="NumberButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="0" Grid.Column="3" Text="DecimalToBinary" BackgroundColor="#D99D81" Clicked="ButtonDecimalToBinary_Clicked" FontAttributes="Bold"/>
                             
                             <!-- Segunda fila de botones numéricos -->
-                            <Button Grid.Row="1" Grid.Column="0" Text="4" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
-                            <Button Grid.Row="1" Grid.Column="1" Text="5" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
-                            <Button Grid.Row="1" Grid.Column="2" Text="6" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
-                            <Button Grid.Row="1" Grid.Column="3" Text="DecimalToTwoComplement" BackgroundColor="#AAAAAA" Clicked="ButtonDecimalToTwosComplement_Clicked"/>
+                            <Button Grid.Row="1" Grid.Column="0" Text="4" BackgroundColor="#D99D81" Clicked="NumberButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="1" Grid.Column="1" Text="5" BackgroundColor="#D99D81" Clicked="NumberButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="1" Grid.Column="2" Text="6" BackgroundColor="#D99D81" Clicked="NumberButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="1" Grid.Column="3" Text="DecimalToTwoComplement" BackgroundColor="#D99D81" Clicked="ButtonDecimalToTwosComplement_Clicked" FontAttributes="Bold"/>
                             
                             <!-- Tercera fila de botones numéricos -->
-                            <Button Grid.Row="2" Grid.Column="0" Text="1" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
-                            <Button Grid.Row="2" Grid.Column="1" Text="2" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
-                            <Button Grid.Row="2" Grid.Column="2" Text="3" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
-                            <Button Grid.Row="2" Grid.Column="3" Text="DecimalToOctal" BackgroundColor="#AAAAAA" Clicked="ButtonDecimalToOctal_Clicked"/>
+                            <Button Grid.Row="2" Grid.Column="0" Text="1" BackgroundColor="#D99D81" Clicked="NumberButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="2" Grid.Column="1" Text="2" BackgroundColor="#D99D81" Clicked="NumberButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="2" Grid.Column="2" Text="3" BackgroundColor="#D99D81" Clicked="NumberButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="2" Grid.Column="3" Text="DecimalToOctal" BackgroundColor="#D99D81" Clicked="ButtonDecimalToOctal_Clicked" FontAttributes="Bold"/>
                             
                             <!-- Cuarta fila de botones funcionales -->
-                            <Button Grid.Row="3" Grid.Column="0" Text="AC" BackgroundColor="#AAAAAA" Clicked="ClearButton_Clicked"/>
-                            <Button Grid.Row="3" Grid.Column="1" Text="0" BackgroundColor="#AAAAAA" Clicked="NumberButton_Clicked"/>
-                            <Button Grid.Row="3" Grid.Column="2" Text="-" BackgroundColor="#AAAAAA" Clicked="MinusButton_Clicked"/>
-                            <Button Grid.Row="3" Grid.Column="3" Text="DecimalToHexadecimal" BackgroundColor="#AAAAAA" Clicked="ButtonDecimalToHexadecimal_Clicked"/>
+                            <Button Grid.Row="3" Grid.Column="0" Text="AC" BackgroundColor="#D99D81" Clicked="ClearButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="3" Grid.Column="1" Text="0" BackgroundColor="#D99D81" Clicked="NumberButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="3" Grid.Column="2" Text="-" BackgroundColor="#D99D81" Clicked="MinusButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="3" Grid.Column="3" Text="DecimalToHexadecimal" BackgroundColor="#D99D81" Clicked="ButtonDecimalToHexadecimal_Clicked" FontAttributes="Bold"/>
                             
                             <!-- Quinta fila para conversiones inversas -->
-                            <Button Grid.Row="4" Grid.Column="3" Text="BinaryToDecimal" BackgroundColor="#AAAAAA" Clicked="ButtonBinaryToDecimal_Clicked"/>
+                            <Button Grid.Row="4" Grid.Column="3" Text="BinaryToDecimal" BackgroundColor="#D99D81" Clicked="ButtonBinaryToDecimal_Clicked" FontAttributes="Bold"/>
                             
                             <!-- Sexta fila de botones hexadecimales -->
-                            <Button Grid.Row="5" Grid.Column="0" Text="A" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
-                            <Button Grid.Row="5" Grid.Column="1" Text="B" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
-                            <Button Grid.Row="5" Grid.Column="2" Text="C" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
-                            <Button Grid.Row="5" Grid.Column="3" Text="TwoComplementToDecimal" BackgroundColor="#AAAAAA" Clicked="ButtonTwosComplementToDecimal_Clicked"/>
+                            <Button Grid.Row="5" Grid.Column="0" Text="A" BackgroundColor="#D99D81" Clicked="HexButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="5" Grid.Column="1" Text="B" BackgroundColor="#D99D81" Clicked="HexButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="5" Grid.Column="2" Text="C" BackgroundColor="#D99D81" Clicked="HexButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="5" Grid.Column="3" Text="TwoComplementToDecimal" BackgroundColor="#D99D81" Clicked="ButtonTwosComplementToDecimal_Clicked" FontAttributes="Bold"/>
                             
                             <!-- Séptima fila de botones hexadecimales -->
-                            <Button Grid.Row="6" Grid.Column="0" Text="D" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
-                            <Button Grid.Row="6" Grid.Column="1" Text="E" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
-                            <Button Grid.Row="6" Grid.Column="2" Text="F" BackgroundColor="#AAAAAA" Clicked="HexButton_Clicked"/>
-                            <Button Grid.Row="6" Grid.Column="3" Text="OctalToDecimal" BackgroundColor="#AAAAAA" Clicked="ButtonOctalToDecimal_Clicked"/>
+                            <Button Grid.Row="6" Grid.Column="0" Text="D" BackgroundColor="#D99D81" Clicked="HexButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="6" Grid.Column="1" Text="E" BackgroundColor="#D99D81" Clicked="HexButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="6" Grid.Column="2" Text="F" BackgroundColor="#D99D81" Clicked="HexButton_Clicked" FontAttributes="Bold"/>
+                            <Button Grid.Row="6" Grid.Column="3" Text="OctalToDecimal" BackgroundColor="#D99D81" Clicked="ButtonOctalToDecimal_Clicked" FontAttributes="Bold"/>
                             
                             <!-- Octava fila para conversiones -->
-                            <Button Grid.Row="7" Grid.Column="3" Text="HexadecimalToDecimal" BackgroundColor="#AAAAAA" Clicked="ButtonHexadecimalToDecimal_Clicked"/>
+                            <Button Grid.Row="7" Grid.Column="3" Text="HexadecimalToDecimal" BackgroundColor="#D99D81" Clicked="ButtonHexadecimalToDecimal_Clicked" FontAttributes="Bold"/>
                         </Grid>
                     </Grid>
                 </Frame>
 
                 <Button Text="BACK" 
-                        BackgroundColor="#BBBBBB"
+                        BackgroundColor="#A94A4A"
                         TextColor="White"
                         FontAttributes="Bold"
                         WidthRequest="150"
