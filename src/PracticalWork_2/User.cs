@@ -2,7 +2,7 @@ using System;
 using System.IO;
 
 namespace PracticalWork_2
-{     //cada cosa que meta el usuario por la interfaz, lo guardo en los atributos del user, y eso lo uso para luego meterlo en el txt
+{    
     public class User
     {
         private string name;
