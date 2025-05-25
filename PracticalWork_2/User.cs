@@ -18,46 +18,12 @@ namespace PracticalWork_2
             this.email = email;
             this.numberOfOperations = 0; //I initialize to 0, because it will be used as a counter
         }
-
         public void UserWriteToFile()
         {
-
             string filePath = "PracticalWork_2/UserInfoSaved.txt";
             StreamWriter sw = File.AppendText(filePath);
             sw.WriteLine($"{this.name};{this.username};{this.password};{this.email};{this.numberOfOperations}");
             sw.Close();
-        }
-        public string GetName()
-        {
-            this.name = name;
-            return this.name;
-        }
-        public void SetName(string name)
-        {
-            this.name = name;
-        }
-        public void SetUsername(string username) 
-        {
-            this.username = username;
-        }
-        public string GetUsername()
-        {
-            this.username = username;
-            return this.username;
-        }
-        public string GetPassword()
-        {
-            this.password = password;
-            return this.password;
-        }
-        public void SetPassword(string password)
-        {
-            this.password = password;
-        }
-        public string GetEmail()
-        {
-            this.email = email;
-            return this.email;
         }
     }
 }

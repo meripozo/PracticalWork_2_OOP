@@ -9,10 +9,7 @@
     <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Padding="0,10,10,0">
     <Button Grid.Column="1" Text="Exit" Clicked="ExitButton_Clicked" BackgroundColor="#FFF0BD" TextColor="#A94A4A" FontAttributes="Bold"/>
     </Grid>
-            <!-- Contenido principal -->
             <VerticalStackLayout Grid.Row="1" Spacing="0">
-                
-                <!-- Encabezado con título -->
                 <Frame BackgroundColor="#A94A4A" 
                     Padding="20"
                     HasShadow="False"
@@ -23,7 +20,6 @@
                         HorizontalOptions="Center"/>
                 </Frame>
                 
-                <!-- Panel principal con información de usuario -->
                 <Frame BackgroundColor="#FFF0BD" 
                     HasShadow="False"
                     Padding="20"
@@ -35,8 +31,6 @@
                             HorizontalOptions="Center"
                             Margin="0,0,0,10"/>
                         
-                        <!-- Username Info -->
-
                         <VerticalStackLayout Spacing="5">
                             <Label Text="Name" 
                                 FontSize="18"/>
@@ -65,7 +59,6 @@
                             </Frame>
                         </VerticalStackLayout>
                         
-                        <!-- Email Info -->
                         <VerticalStackLayout Spacing="5">
                             <Label Text="Email" 
                                 FontSize="18"/>
@@ -80,7 +73,6 @@
                             </Frame>
                         </VerticalStackLayout>
                         
-                        <!-- Password Info (mascared) -->
                         <VerticalStackLayout Spacing="5">
                             <Label Text="Password" 
                                 FontSize="18"/>
@@ -95,7 +87,6 @@
                             </Frame>
                         </VerticalStackLayout>
                         
-                        <!-- Number of Operations -->
                         <VerticalStackLayout Spacing="5">
                             <Label Text="Number of Operations" 
                                 FontSize="18"/>

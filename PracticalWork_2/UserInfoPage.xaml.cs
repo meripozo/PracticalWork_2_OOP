@@ -2,9 +2,7 @@ using Microsoft.Maui.Controls;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-
 namespace PracticalWork_2;
-
 public partial class UserInfoPage : ContentPage, IQueryAttributable
 {
     private string currentUsername;
@@ -12,14 +10,12 @@ public partial class UserInfoPage : ContentPage, IQueryAttributable
     {
         InitializeComponent();
     }
-
     //this function belongs to IQueryAttributable interface, I use it "catch" the parameters passed from the Query (from another page)
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         if (query.ContainsKey("currentusername"))
             this.currentUsername = query["currentusername"].ToString();
     }
-
     protected override void OnAppearing()
     {
         base.OnAppearing();
@@ -39,25 +35,20 @@ public partial class UserInfoPage : ContentPage, IQueryAttributable
                     PasswordLabel.Text = userValues[2];
                     EmailLabel.Text = userValues[3];
                     OperationsLabel.Text = userValues[4];
-                    
 				}
 			}
 		}
-
     }
-
     private async void BackButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
     }
-
     private async void ExitButton_Clicked(object sender, EventArgs e)
     {
-        bool answer = await DisplayAlert("Confirmation", "Do you want to exit the application?", "Yes", "No");
+        bool answer = await DisplayAlert("Exit", "Are you sure you want to exit the application?", "Yes", "No");
         if (answer)
         {
-            // En apps móviles reales, sería mejor navegar a la página de login o la página inicial
-            System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+            Application.Current.Quit();
         }
     }
 }

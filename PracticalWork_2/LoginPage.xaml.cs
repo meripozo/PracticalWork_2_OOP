@@ -2,8 +2,6 @@
 using System;
 using System.IO;
 namespace PracticalWork_2;
-
-
 public partial class LoginPage : ContentPage
 {
 	public LoginPage()
@@ -12,12 +10,10 @@ public partial class LoginPage : ContentPage
 	}
 	private async void SignInButton_Clicked(object sender, EventArgs e)
 	{
-
-		if (string.IsNullOrEmpty(UsernameEntry.Text) || string.IsNullOrEmpty(PasswordEntry.Text))    //cambiar esto a un if igualando a comillas vacías
+		if (UsernameEntry.Text == "" || UsernameEntry.Text == null || PasswordEntry.Text == "" || PasswordEntry.Text == null)    
 		{
 			await DisplayAlert("Error", "Please enter both username and password", "OK");
 		}
-	
 
 		string filePath = "PracticalWork_2/UserInfoSaved.txt";
 		if (File.Exists(filePath))
@@ -41,20 +37,16 @@ public partial class LoginPage : ContentPage
 			{
 				await DisplayAlert("Error", "Invalid username or password", "OK");
 			}
-			
 		}
-		
 	}
 	private async void ExitButton_Clicked(object sender, EventArgs e)
     {
         bool answer = await DisplayAlert("Exit", "Are you sure you want to exit the application?", "Yes", "No");
         if (answer)
         {
-            // Exit the application
             Application.Current.Quit();
         }
     }
-	
 	private async void ForgotPassword_Clicked(object sender, EventArgs e)
 	{
 		await Navigation.PushAsync(new RecoverPasswordPage());
