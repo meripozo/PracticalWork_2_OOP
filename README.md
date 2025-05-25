@@ -111,6 +111,8 @@ between them, is as follows:
 <img src="./scjsafpd.png"
 style="width:6.27083in;height:4.19792in" />
 
+![image](https://github.com/user-attachments/assets/e63e4c56-6260-4a4e-a945-d4c69f8e2388)
+
 **Problems**
 
 > \- Initial challenge: familiarizing myself with how the Maui code
