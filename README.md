@@ -178,18 +178,6 @@ style="width:4.55208in;height:2.53125in" />
 
 **Conclusion**
 
-La realización de este trabajo me ha resultado especialmente
-enriquecedora, ya que nos ha permitido adquirir un conocimiento más
-profundo y completo sobre el diseño, implementación y aplicación de
-conceptos aprendidos en la asignatura de Programación Orientada a
-Objetos. Considero que esta experiencia será muy útil para mi futuro
-profesional, ya que el manejo adecuado de estas interfaces GUI es una
-competencia fundamental en muchos ámbitos laborales relacionados con la
-informática.
+Completing this project has been particularly enriching for me, as it has allowed us to acquire a deeper and more comprehensive understanding of the design, implementation, and application of concepts learned in the Object-Oriented Programming course. I believe this experience will be very useful for my future career, as proper handling of these GUI interfaces is a fundamental skill in many IT-related work environments.
 
-En conclusión, este proyecto no solo me ha permitido afianzar conceptos
-teóricos, sino también enfrentarme a situaciones prácticas que me han
-exigido tomar decisiones, y pensar en nuevas formas distintas de
-resolver errores en mi código. Todo ello ha contribuido a que el
-aprendizaje haya sido significativo y aplicable a futuros contextos
-profesionales.
+In conclusion, this project has not only allowed me to consolidate theoretical concepts but also to face practical situations that required me to make decisions and think of new ways to resolve errors in my code. All of this has contributed to meaningful learning that is applicable to future professional contexts.
