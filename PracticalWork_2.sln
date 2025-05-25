@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalWork_2", "PracticalWork_2\PracticalWork_2.csproj", "{3BBDB323-5611-45EE-9DEC-34F78C29C811}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BB7F67C9-5250-496C-A2D1-61880AD2C7F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalWork_2", "src\PracticalWork_2\PracticalWork_2.csproj", "{7A792588-CC55-41A8-AE37-B8ED195D19B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +16,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3BBDB323-5611-45EE-9DEC-34F78C29C811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BBDB323-5611-45EE-9DEC-34F78C29C811}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BBDB323-5611-45EE-9DEC-34F78C29C811}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BBDB323-5611-45EE-9DEC-34F78C29C811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A792588-CC55-41A8-AE37-B8ED195D19B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A792588-CC55-41A8-AE37-B8ED195D19B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A792588-CC55-41A8-AE37-B8ED195D19B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A792588-CC55-41A8-AE37-B8ED195D19B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7A792588-CC55-41A8-AE37-B8ED195D19B8} = {BB7F67C9-5250-496C-A2D1-61880AD2C7F6}
 	EndGlobalSection
 EndGlobal

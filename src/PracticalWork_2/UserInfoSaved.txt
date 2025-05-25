@@ -1,0 +1,7 @@
+angie;anyiyiyiyiyiii;caca2;Angie@perez.com;2
+maria;mariaAcevedo;caca1;maria@acevedo.com;0
+irene;ireRosa;caca3;Irene@gmail.com;0
+javi;javi1;caca01;javi@gmail.com;2
+pepe;pepee;Strong#Pass9;pepe@gmail.com;3
+ede;AAAA;Strong#Pass8;a@gmail.com;0
+sama;Sama;Strong#Pass8;s@gmail.com;0
